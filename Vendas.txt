@@ -1,0 +1,2 @@
+Abacate|Frutas|4.99|2|David Benner|Pedro Israel
+Cenoura|Legumes|4.99|2|David Benner|Bárbara Luzia

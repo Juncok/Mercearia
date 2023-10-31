@@ -1,0 +1,2 @@
+Abacate|Frutas|4.99
+Cenoura|Verduras|2.99
