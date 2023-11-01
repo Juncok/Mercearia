@@ -64,7 +64,3 @@ class VendaDAO:
                 vendas.append(Venda(Produtos(i.split('|')[0], i.split('|')[1], i.split('|')[2]),
                                     i.split('|')[3], i.split('|')[4], i.split('|')[5]))
             return vendas
-
-
-a = VendaDAO()
-print(a.Ler()[0].comprador)
