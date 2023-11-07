@@ -1,3 +1,6 @@
-Jaca|Frutas|12.99|2
-Maçã|Frutas|4.99|20
-Cebola|Legumes|2.99|8
+Abacate|Frutas|4.99
+Cenoura|Verduras|2.99
+Feijão|Cereal|4,99
+Batata|Legume|4,99
+Goiabada|Doce|1,99
+Banana|Fruta|1,99
