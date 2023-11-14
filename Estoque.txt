@@ -1,6 +1,8 @@
-Abacate|Frutas|4.99
-Cenoura|Verduras|2.99
-Feijão|Cereal|4,99
-Batata|Legume|4,99
-Goiabada|Doce|1,99
-Banana|Fruta|1,99
+Abacate|Frutas|4.99|8
+Cenoura|Verduras|2.99|7
+Feijão|Cereal|4,99|6
+Batata|Legume|4,99|5
+Goiabada|Doce|1,99|4
+Banana|Fruta|1,99|1
+Alface|Legumes|1.99|2
+Agrião|Legumes|2.99|4

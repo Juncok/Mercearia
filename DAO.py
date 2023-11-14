@@ -10,8 +10,10 @@ class CategoriaDAO:
     @classmethod
     def Ler(cls):
         with open('Categoria.txt', 'r') as arq:
+            cat = []
             for i in arq.readlines():
-                print(i.replace('\n', ''))
+                cat.append(i.replace('\n', ''))
+            return cat
 
 
 class ProdutosDAO:
@@ -28,6 +30,7 @@ class ProdutosDAO:
             for i in cls.produtos:
                 prod.append(Produtos(i.split('|')[0], i.split('|')[1], i.split('|')[2]))
             return prod
+
 
 class EstoqueDAO:
     @classmethod
@@ -64,3 +67,5 @@ class VendaDAO:
                 vendas.append(Venda(Produtos(i.split('|')[0], i.split('|')[1], i.split('|')[2]),
                                     i.split('|')[3], i.split('|')[4], i.split('|')[5]))
             return vendas
+
+

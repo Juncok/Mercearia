@@ -1,3 +1,4 @@
 Legumes
 Cereais
-Doces
+Bebidas
+Frutas

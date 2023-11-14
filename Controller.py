@@ -34,6 +34,34 @@ class CategoriaController:
             else:
                 print('Categoria não encontrada!')
 
+    def Alterar(self, categoriaantiga, categorianova):
+        with open('Categoria.txt', 'r') as arq:
+            categorias = arq.readlines()
+            existeAntiga = False
+            existeNova = False
+            for i in categorias:
+                if i.lower().replace('\n', '') == str(categoriaantiga).lower():
+                    existeAntiga = True
+                if i.lower().replace('\n', '') == str(categorianova).lower():
+                    existeNova = True
+            if not existeAntiga:
+                print('Categoria ', categoriaantiga, ' não encontrada!')
+            elif existeNova:
+                print('Categoria ', categorianova, ' já existe!')
+            else:
+                with open('Categoria.txt', 'w') as arq:
+                    for i in categorias:
+                        if i.lower().replace('\n', '') != categoriaantiga.lower():
+                            CategoriaDAO().Salvar(i.replace('\n', ''))
+                    CategoriaDAO().Salvar(categorianova)
+                    print('Categora ', categoriaantiga, ', alterada para ', categorianova,' com sucesso!')
+
+
+    def Ler(self):
+        with open('Categoria.txt', 'r') as arq:
+            for i in arq.readlines():
+                print(i.replace('\n', ''))
+
 
 class ProdutosController:
     def Salvar(self, novoproduto: Produtos):
@@ -66,5 +94,33 @@ class ProdutosController:
                 print(removerproduto, ' removido com sucesso!')
 
 
-a = ProdutosController()
-a.Remover('Banana')
+class EstoqueController():
+    def Salvar(self, produto:Produtos, quantidade):
+        e = []
+        c = []
+        for i in EstoqueDAO.Ler():
+            e.append(str(i.produto.nome).lower())
+        for i in CategoriaDAO.Ler():
+            c.append(i.lower())
+        if str(produto.nome).lower() in e:
+            print('O produto', produto.nome, 'já consta no estoque!')
+        elif str(produto.categoria).lower() not in c:
+            print('A categoria', produto.categoria, 'não existe!')
+        else:
+            EstoqueDAO.Salvar(Estoque(Produtos(produto.nome, produto.categoria, produto.preco), quantidade))
+
+    def Ler(self):
+        print('-'*8, 'ESTOQUE', '-'*8)
+        for i in EstoqueDAO.Ler():
+            print('Produto: ', i.produto.nome, ' - Categoria: ', i.produto.categoria, ' - Quantidade: ', i.quantidade.replace('\n', ''))
+
+    def Remover(self, estoqueRemover):
+        existe = False
+        for i in EstoqueDAO.Ler():
+            if i.produto.nome.lower() == estoqueRemover.lower():
+                existe = True
+        return existe
+
+
+a = EstoqueController()
+print(a.Remover('Abacate'))
