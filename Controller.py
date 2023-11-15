@@ -116,11 +116,37 @@ class EstoqueController():
 
     def Remover(self, estoqueRemover):
         existe = False
-        for i in EstoqueDAO.Ler():
+        estoque = EstoqueDAO.Ler()
+        for i in estoque:
             if i.produto.nome.lower() == estoqueRemover.lower():
                 existe = True
-        return existe
+        if not existe:
+            print(estoqueRemover, 'não foi encontrado!')
+        else:
+            with open('Estoque.txt', 'w') as arq:
+                for i in estoque:
+                    if i.produto.nome.lower() != estoqueRemover.lower():
+                        EstoqueDAO.Salvar(Estoque(Produtos(i.produto.nome, i.produto.categoria, i.produto.preco),
+                                                  i.quantidade.replace('\n', '')))
+            print(estoqueRemover, 'removido com sucesso!')
 
 
-a = EstoqueController()
-print(a.Remover('Abacate'))
+class VendaController():
+    def Salvar(self, venda: Venda):
+        vendas = VendaDAO.Ler()
+        existe = False
+        for i in vendas:
+            if i.itemVendido.nome.lower() == venda.itemVendido.nome.lower():
+                existe = True
+        if existe:
+            print(venda.itemVendido.nome, 'já está cadastrado!')
+        else:
+            VendaDAO.Salvar(Venda(Produtos(venda.itemVendido.nome, venda.itemVendido.categoria, venda.itemVendido.preco),
+                                  venda.quantidadeVendida, venda.vendedor, venda.comprador))
+            print(venda.itemVendido.nome, 'cadastrado com sucesso!')
+
+
+a = VendaController()
+a.Salvar(Venda(Produtos('Feijão', 'Cereais', '6.99'), 2,
+               'David Benner', 'Pedro Ismael'))
+

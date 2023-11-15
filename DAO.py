@@ -57,7 +57,6 @@ class VendaDAO:
             arq.writelines(venda.itemVendido.nome + '|' + venda.itemVendido.categoria + '|' + str(venda.itemVendido.preco) +
                            '|' + str(venda.quantidadeVendida) + '|' + venda.vendedor + '|' + venda.comprador + '\n')
 
-
     @classmethod
     def Ler(cls):
         with open('Vendas.txt', 'r') as arq:
@@ -67,5 +66,3 @@ class VendaDAO:
                 vendas.append(Venda(Produtos(i.split('|')[0], i.split('|')[1], i.split('|')[2]),
                                     i.split('|')[3], i.split('|')[4], i.split('|')[5]))
             return vendas
-
-
