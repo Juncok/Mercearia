@@ -94,7 +94,7 @@ class ProdutosController:
                 print(removerproduto, ' removido com sucesso!')
 
 
-class EstoqueController():
+class EstoqueController:
     def Salvar(self, produto:Produtos, quantidade):
         e = []
         c = []
@@ -131,22 +131,42 @@ class EstoqueController():
             print(estoqueRemover, 'removido com sucesso!')
 
 
-class VendaController():
+class VendaController:
     def Salvar(self, venda: Venda):
-        vendas = VendaDAO.Ler()
+        estoque = EstoqueDAO.Ler()
         existe = False
-        for i in vendas:
-            if i.itemVendido.nome.lower() == venda.itemVendido.nome.lower():
+        quantidade = 0
+        for i in estoque:
+            if i.produto.nome.lower() == venda.itemVendido.nome.lower():
                 existe = True
-        if existe:
-            print(venda.itemVendido.nome, 'já está cadastrado!')
+                quantidade = int(i.quantidade)
+        if not existe:
+            print(venda.itemVendido.nome, 'não foi encontrado na estoque!')
+        elif quantidade < venda.quantidadeVendida:
+            print('Quantidade insuficiente do produto!')
         else:
             VendaDAO.Salvar(Venda(Produtos(venda.itemVendido.nome, venda.itemVendido.categoria, venda.itemVendido.preco),
                                   venda.quantidadeVendida, venda.vendedor, venda.comprador))
             print(venda.itemVendido.nome, 'cadastrado com sucesso!')
 
+    def Relatorio(self):
+        vendas = []
+        for i in VendaDAO.Ler():
+            produto = i.itemVendido.nome
+            quantidade = int(i.quantidadeVendida)
+            iguais = list(filter(lambda x: produto == x['produto'], vendas))
+            if len(iguais) == 0:
+                vendas.append({'produto': produto, 'quantidade': quantidade})
+            else:
+                vendas = list(map(lambda x: {'produto': produto, 'quantidade': quantidade + x['quantidade']}
+                                             if x['produto'] == produto else x, vendas))
+
+        ordenado = sorted(vendas, key=lambda k: k['quantidade'])
+        print('QUANTIDADE', 12*'=', 'PRODUTO\n', 28*'-')
+        for i in ordenado:
+            print(i['quantidade'], 20*'=', i['produto'])
+        return ordenado
+
 
 a = VendaController()
-a.Salvar(Venda(Produtos('Feijão', 'Cereais', '6.99'), 2,
-               'David Benner', 'Pedro Ismael'))
-
+print(a.Relatorio())
