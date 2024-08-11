@@ -1,10 +1,10 @@
-class Categoria:
+class Categorias:
     def __init__(self, categoria):
         self.categoria = categoria
 
 
 class Produtos:
-    def __init__(self, nome, categoria: Categoria, preco):
+    def __init__(self, nome, categoria, preco):
         self.nome = nome
         self.categoria = categoria
         self.preco = preco
@@ -16,33 +16,33 @@ class Estoque:
         self.quantidade = quantidade
 
 
-class Venda:
-    def __init__(self, itemVendido: Produtos, quantidadeVendida, vendedor, comprador):
-        self.itemVendido = itemVendido
-        self.quantidadeVendida = quantidadeVendida
-        self.vendedor = vendedor
-        self.comprador = comprador
-
-
 class Fornecedor:
-    def __init__(self, nome, cnpj, telefone, email, endereco):
-        self.nome = nome
+    def __init__(self, categoria:Categorias, cnpj, nome, telefone, email):
+        self.categoria = categoria
         self.cnpj = cnpj
+        self.nome = nome
         self.telefone = telefone
         self.email = email
-        self.endereco = endereco
+
+
+class Vendas:
+    def __init__(self, itemVendido:Produtos, vendedor, comprador, quantidadeVendida):
+        self.itemVendido = itemVendido
+        self.vendedor = vendedor
+        self.comprador = comprador
+        self.quantidadeVendida = quantidadeVendida
 
 
 class Pessoa:
-    def __init__(self, nome, cpf, telefone, email, endereco):
-        self.nome = nome
+    def __init__(self, cpf, nome, telefone, email, endereco):
         self.cpf = cpf
+        self.nome = nome
         self.telefone = telefone
         self.email = email
         self.endereco = endereco
 
 
 class Vendedor(Pessoa):
-    def __init__(self, cnpj, nome, cpf, telefone, email, endereco):
-        self.cnpj = cnpj
-        super(Vendedor, self).__init__(nome, cpf, telefone, email, endereco)
+    def __init__(self, clt, cpf, nome, telefone, email, endereco):
+        self.clt = clt
+        super(Vendedor).__init__(cpf, nome, telefone, email, endereco)

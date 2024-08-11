@@ -6,3 +6,4 @@ Goiabada|Doce|1,99|4
 Banana|Fruta|1,99|1
 Alface|Legumes|1.99|2
 Agrião|Legumes|2.99|4
+Trakinas|Biscoitos|3.59|18
