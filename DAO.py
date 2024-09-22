@@ -38,6 +38,18 @@ class EstoqueDAO:
             return arq.readlines()
 
 
-a = CategoriaDAO()
-for i in a.Ler():
-    print(i.replace('\n', ''))
+class VendasDAO:
+    @classmethod
+    def Salvar(cls, venda:Vendas):
+        with open('Vendas.txt', 'a') as arq:
+            arq.writelines(venda.itemVendido.categoria + '|' + venda.itemVendido.nome + '|' +
+                           venda.itemVendido.preco + '|' + venda.vendedor + '|' +
+                           venda.comprador + '|' + venda.quantidadeVendida + '\n')
+
+    @classmethod
+    def Ler(cls):
+        with open('Vendas.txt', 'r') as arq:
+            return arq.readlines()
+
+
+

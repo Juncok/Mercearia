@@ -3,5 +3,4 @@ Cenoura|Verduras|2.99
 Feijão|Cereal|4,99
 Batata|Legume|4,99
 Goiabada|Doce|1,99
-Banana|Fruta|1,99
-Abacaxi|Frutas|7,99
+Caju|Frutas|6.99

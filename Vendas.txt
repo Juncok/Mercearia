@@ -1,14 +1,3 @@
-Abacate|Frutas|4.99|4|David Benner|Pedro Israel
-Cenoura|Legumes|4.99|4|David Benner|Bárbara Luzia
-Feijão|Cereais|6.99|2|David Benner|Pedro Ismael
-Feijão|Cereais|6.99|8|David Benner|Pedro Ismael
-Batata|Cereais|6.99|5|David Benner|Pedro Ismael
-Batata|Cereais|6.99|5|David Benner|Pedro Ismael
-Batata|Cereais|6.99|5|David Benner|Pedro Ismael
-Batata|Cereais|6.99|5|David Benner|Pedro Ismael
-Batata|Cereais|6.99|5|David Benner|Pedro Ismael
-Cenoura|Legumes|4.99|2|David Benner|Bárbara Luzia
-Cenoura|Legumes|4.99|4|David Benner|Bárbara Luzia
-Morango|Frutas|4.99|2|David Benner|Pedro Israel
-Abacate|Frutas|4.99|6|David Benner|Pedro Israel
-Morango|Frutas|4.99|13|David Benner|Pedro Israel
+Frutas|Banana|5,99|David Benner|Pedro Ismael|8
+Frutas|Abacate|5,99|David Benner|Pedro Ismael|8
+Cereal|Feijão|5,99|David Benner|Pedro Ismael|8
