@@ -1,6 +1,6 @@
 Abacate|Frutas|4.99
-Cenoura|Verduras|2.99
 Feijão|Cereal|4,99
 Batata|Legume|4,99
 Goiabada|Doce|1,99
 Caju|Frutas|6.99
+Acem|Carnes|24.99

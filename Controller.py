@@ -1,5 +1,3 @@
-from sre_compile import isstring
-
 from Models import *
 from DAO import *
 
@@ -82,17 +80,24 @@ class ProdutosController:
         produtos = ProdutosDAO.Ler()
         existeAnterior = False
         existeNovo = False
+        nome=str(produtoNovo.nome).lower()
         for i in produtos:
             if i.split('|')[0].lower() == str(produtoAnterior).lower():
                 existeAnterior = True
             if i.split('|')[0].lower() == str(produtoNovo.nome).lower():
-                produtoNovo = True
+                existeNovo = True
         if not existeAnterior:
             print('Produto não encontrado')
         elif existeNovo:
-            print('Produto {} já tem cadastrado.'.format(produtoNovo))
+            print('Produto {} já tem cadastrado.'.format(produtoNovo.nome))
+        else:
+            with open('Produtos.txt', 'w'):
+                for i in produtos:
+                    if i.split('|')[0].lower()!= produtoAnterior.lower():
+                            ProdutosDAO.Salvar(Produtos(i.split('|')[0], i.split('|')[1], i.split('|')[2].replace('\n', '')))
+                ProdutosDAO.Salvar(Produtos(produtoNovo.nome, produtoNovo.categoria, str(produtoNovo.preco)))
 
 
 
 a = ProdutosController()
-a.AlterarProduto('cenouras', Produtos('Abacate', 'Frutas', 4.99))
+a.AlterarProduto('cenoura', Produtos('Acem', 'Carnes', 24.99))
